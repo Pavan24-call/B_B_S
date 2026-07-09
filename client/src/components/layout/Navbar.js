@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { FaBus } from 'react-icons/fa'
 import { logout } from '../../actions/auth'
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
@@ -30,7 +31,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     return (
         <nav className="navbar bg-dark">
             <h1>
-                <Link to="/"> BaljeetVerse</Link>
+                <Link to="/"><FaBus style={{ marginRight: '10px', verticalAlign: 'middle', display: 'inline-block' }} /> VNSP</Link>
             </h1>
             {!loading && (<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
         </nav>
