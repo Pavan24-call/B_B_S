@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Bus-Booking-Project
 
 A Bus ticket booking application made using MERN Stack (MongoDB, Express js, React js, Node js)
@@ -127,3 +128,6 @@ Follow the following steps to get development environment running.
 ---
 
 
+=======
+# B_B_S
+>>>>>>> 99d0e74af487b7f5dd4471315bea24691d7d8250
