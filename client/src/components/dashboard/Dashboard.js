@@ -1,26 +1,8 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCurrentProfile, deleteAccount } from '../../actions/profile'
 import { Link } from 'react-router-dom'
-// import DashboardActions from './DashboardActions'
-// import Experience from './Experience'
-import Buses from './Buses'
-// const DashboardActions = () => {
-//     return (
-//         <div className='dash-buttons'>
-//             <Link to='/edit-profile' className='btn btn-light'>
-//                 <i className='fas fa-user-circle text-primary' /> Edit Profile
-//         </Link>
-//             <Link to='/add-experience' className='btn btn-light'>
-//                 <i className='fab fa-black-tie text-primary' /> Add Experience
-//         </Link>
-//             <Link to='/add-buses' className='btn btn-light'>
-//                 <i className='fas fa-graduation-cap text-primary' /> Add buses
-//         </Link>
-//         </div>
-//     );
-// };
 
 const Dashboard = ({ auth: { user }, profile: { profile, loading } }) => {
 

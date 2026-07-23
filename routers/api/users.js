@@ -140,14 +140,17 @@ router.put(
 
 router.delete('/buses/:bus_id', auth, async (req, res) => {
     try {
-        const foundProfile = await User.findOne({ user: req.body.id });
+        const foundUser = await User.findById(req.user.id);
+        if (!foundUser) {
+            return res.status(404).json({ msg: 'User not found' });
+        }
 
-        foundProfile.buses = foundProfile.buses.filter(
-            (bus) => bus._id.toString() !== req.params.bus_id
+        foundUser.ticket = foundUser.ticket.filter(
+            (tkt) => tkt.tokenData !== req.params.bus_id && (!tkt._id || tkt._id.toString() !== req.params.bus_id)
         );
 
-        await foundProfile.save();
-        return res.status(200).json(foundProfile)
+        await foundUser.save();
+        return res.status(200).json(foundUser)
     } catch (error) {
         console.error(error);
         return res.status(500).json({ msg: 'Server error' });
@@ -157,9 +160,17 @@ router.delete('/buses/:bus_id', auth, async (req, res) => {
 
 
 
-
-
-
-
+// @route    DELETE api/users
+// @desc     Delete user account
+// @access   Private
+router.delete('/', auth, async (req, res) => {
+    try {
+        await User.findByIdAndRemove(req.user.id);
+        res.json({ msg: 'User deleted.' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 module.exports = router;
